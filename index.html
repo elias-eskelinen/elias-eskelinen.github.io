@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Elias Eskelinen - Uutisseuranta</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./js/dist/jqvmap.css" media="screen" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="./js/dist/jquery.vmap.js"></script>
+    <script type="text/javascript" src="./js/dist/maps/jquery.vmap.europe.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+      function touch_detect() {
+        return 'ontouchstart' in window || 'onmsgesturechange' in window || navigator.msMaxTouchPoints > 0;
+      }
+      
+      jQuery(document).ready(function () {
+      // Store currentRegion
+      var currentRegion = 'fr';
+      
+      // List of Regions we'll let clicks through for
+      var enabledRegions = ['fi', 'ua', 'gb', 'fr', 'ru'];
+      var sums = ["Suomi", "Ukraina", "IB", "Ranska", "Venäjä"];
+      var breads = ["1", "2", "3", "4", "5"];
+	  var urls = ["", "https://yle.fi/uutiset/3-10757973", "https://yle.fi/uutiset/3-10683262", "https://www.nytimes.com/2019/04/29/opinion/europe-integration.html", ""];
+        map = jQuery('#vmap').vectorMap({
+          map: 'europe_en',
+          enableZoom: true,
+          showTooltip: true,
+          selectedColor: '#66000c',
+          hoverColor: null,
+          selectedRegions: ['fr'],
+          colors: {
+          fi: '#455890',
+          fr: '#455890',
+          gb: '#455890',
+          ua: '#455890',
+		  ru: '#455890'
+          },
+          onRegionClick: function(event, code, region){
+          // Check if this is an Enabled Region, and not the current selected on
+          	if(enabledRegions.indexOf(code) === -1 || currentRegion === code){
+          // Not an Enabled Region
+          		event.preventDefault();
+          	} else {
+          // Enabled Region. Update Newly Selected Region.
+          		currentRegion = code;
+          	}
+          },
+          onRegionSelect: function(event, code, region){
+          	console.log(map.selectedRegions);
+          	var otsikko = sums[enabledRegions.indexOf(code)];
+			var url = urls[enabledRegions.indexOf(code)];
+          	$("#sum").html('<h3>' + otsikko + ':</h3');
+          	$("#bread").html(breads[enabledRegions.indexOf(code)]);
+			$("#url").html('<a href="'+url+'">' + url + '<br \></a');
+          },
+          onLabelShow: function(event, label, code){
+          	if(enabledRegions.indexOf(code) === -1){
+          		event.preventDefault();
+          	}
+          }
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>UUTISSEURANTA</h1>
+    <div id="vmap" style="width: device-width; height: 520px;"></div>
+    <div id="sum"></div>
+    <div id="bread">Paina sinisellä korostettua maata aloittaaksesi!</div>
+	<a id="url"></a>
+  </body>
+  ©Elias Eskelinen
+</html>
