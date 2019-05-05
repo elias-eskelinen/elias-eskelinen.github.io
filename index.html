@@ -22,7 +22,7 @@
       
       // List of Regions we'll let clicks through for
       var enabledRegions = ['sp', 'ua', 'gb', 'fr', 'ru'];
-      var sums = ["Suomi", "Ukraina", "IB", "Ranska", "Venäjä"];
+      var sums = ["Espanja", "Ukraina", "IB", "Ranska", "Venäjä"];
       var breads = ["1", "2", "3", "4", "5"];
 	  var urls = ["https://www.theguardian.com/global-development/2019/apr/14/rape-abuse-claims-spains-strawberry-industry", "https://yle.fi/uutiset/3-10757973", "https://yle.fi/uutiset/3-10683262", "https://www.nytimes.com/2019/04/29/opinion/europe-integration.html", ""];
         map = jQuery('#vmap').vectorMap({
@@ -33,11 +33,11 @@
           hoverColor: null,
           selectedRegions: ['fr'],
           colors: {
-          fi: '#455890',
+          sp: '#455890',
           fr: '#455890',
           gb: '#455890',
           ua: '#455890',
-		  ru: '#455890'
+          ru: '#455890'
           },
           onRegionClick: function(event, code, region){
           // Check if this is an Enabled Region, and not the current selected on
