@@ -21,10 +21,10 @@
       var currentRegion = 'es';
       
       // List of Regions we'll let clicks through for
-      var enabledRegions = ['es', 'ua', 'gb', 'fr', 'fi'];
-      var sums = ["Espanja", "Ukraina", "IB", "Ranska", "Suomi, Kemi"];
+      var enabledRegions = ['es', 'ua', 'gb', 'ro', 'fi'];
+      var sums = ["Espanja", "Ukraina", "IB", "Romania", "Suomi, Kemi"];
       var breads = ["Espanjassa epäillään mansikanpoimijoiden laitonta maahan tuontia, sekä viranomaisten lahjomista tuotujen poimijoiden oikeuksien mitätöimiseksi.", "Venäjä harkitsee kansallisuuden saamisen helpoittamista ukrainalaisille.", "Brexit aiheuttaa britanniassa massa-maastamuuttoa.", "4", "Kemistä lähtee ihmisiä."];
-	  var urls = ["https://www.theguardian.com/global-development/2019/apr/14/rape-abuse-claims-spains-strawberry-industry", "https://yle.fi/uutiset/3-10757973", "https://yle.fi/uutiset/3-10683262", "https://www.nytimes.com/2019/04/29/opinion/europe-integration.html", "https://yle.fi/uutiset/3-10720512"];
+	  var urls = ["https://www.theguardian.com/global-development/2019/apr/14/rape-abuse-claims-spains-strawberry-industry", "https://yle.fi/uutiset/3-10757973", "https://yle.fi/uutiset/3-10683262", "https://yle.fi/uutiset/3-10666509", "https://yle.fi/uutiset/3-10720512"];
         map = jQuery('#vmap').vectorMap({
           map: 'europe_en',
           enableZoom: true,
@@ -34,7 +34,7 @@
           selectedRegions: ['es'],
           colors: {
           es: '#455890',
-          fr: '#455890',
+          ro: '#455890',
           gb: '#455890',
           ua: '#455890',
           fi: '#455890'
